@@ -1,0 +1,29 @@
+<div class="wrapper_modal_cart">
+    <div class="modal_cart">
+        <h1>Корзина</h1>
+        <div class="product_in_cart">
+            <img :src="require('./assets/img/' + purchase.img)">
+            <p class="product_name">{{purchase.name}}</p>
+            <div class="cost_and_button">
+                <div class="inc_and_dev_button">
+                    <button class="decrease_button">-</button>
+                    <p>1</p>
+                    <button class="increase_button">+</button>
+                </div>
+                <button class="delete_product_button">Удалить</button>
+                <p class="product_cost"> {{purchase.cost}}</p>
+            </div>
+        </div>
+        <p class="cart_sum">Общая сумма: 2000 р</p>
+        <div class="buttons_close_and_buy">
+            <button 
+                @click="closeModal"
+                class="close_modal"
+            >Закрыть корзину</button>
+            <button 
+                @click="buyProducts"
+                class="buy_products"
+            >Заказать</button>
+        </div>
+</div>
+</div>
