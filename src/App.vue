@@ -157,6 +157,12 @@ export default {
 
 <style>
 @import url("./assets/null.css");
+* {
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+}
 .body {
     max-width: 1440px;
 }
