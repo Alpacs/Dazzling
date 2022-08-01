@@ -6,9 +6,6 @@
       <title>Dazzling</title>
   </head>
   <body>
-      <div class="alert">
-          <p>Откройте, пожалуйста, в разрешении 1440р, я не упел сделать адаптив.</p>
-      </div>
       <header class="main_header">
           <a href=# class="logo_main_header">
               <img src="./assets/img/logoimg.png">
@@ -439,20 +436,5 @@ export default {
     src: url("./assets/fonts/GT_Eesti_Pro/GTEestiProDisplay-Light.ttf") format("truetype"); 
     font-style: light; 
     font-weight: normal; 
-}
-@media (min-width: 1441px) {
-    .alert {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        position: absolute;
-        z-index: 666;
-        font-size: 100px;
-        background-color: #fff;
-
-    }
 }
 </style>
