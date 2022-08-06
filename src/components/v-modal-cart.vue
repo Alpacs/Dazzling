@@ -107,7 +107,8 @@ export default ({
 }
 .cost_and_button {
     position: absolute;
-    right: 22px;
+    right: 0;
+    width: calc(100% / 3.5);
 }
 .decrease_button, .increase_button {
     border: 1px solid #000000;
@@ -126,6 +127,9 @@ export default ({
     font-weight: 300;
     font-size: 15px;
     line-height: 18px;
+    background-color: #fff;
+    margin-top: 6px;
+    margin-left: 33px;
 }
 .cart_sum {
     display: flex;
@@ -161,6 +165,11 @@ export default ({
     font-weight: 600;
     font-size: 18px;
     line-height: 23px;
+}
+.product_cost {
+    margin: 0;
+    margin-top: 10px;
+    margin-left: 5px;
 }
 @font-face {
     font-family: "GT_Eesti_Pro"; 

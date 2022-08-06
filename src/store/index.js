@@ -42,6 +42,8 @@ export default createStore({
         },
         deleteProductFromCart(state, product) {
             state.sum_in_cart = state.sum_in_cart - product.count_in_cart*product.cost;
+            state.data_catalog[product.article].count = state.data_catalog[product.article].count + state.data_catalog[product.article].count_in_cart;
+            state.data_catalog[product.article].count_in_cart = 0;
             state.data_cart = state.data_cart.filter(p => p.article !== product.article);
         },
         incCountInCart(state, product) {

@@ -5,8 +5,9 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Dazzling</title>
   </head>
-  <body>
-      <header class="main_header">
+  <body :class='{inactive: showCart}'>
+      <header 
+        class="main_header">
           <a href=# class="logo_main_header">
               <img src="./assets/img/logoimg.png">
               <span>
@@ -34,17 +35,6 @@
                 v-if="showCart"
                 ref="vModalcart">
             </vModalcart>
-      </div>
-      <div    
-        v-if='showContact'
-        class='wrapper_modal_contact'>
-        <vModalContact
-            @closeModalContact='closeCartModal'
-            v-if="showContact"
-            ref="vModalContact"
-            class='v_Modal_Contact'>
-            >
-        </vModalContact>
       </div>
       <div class='main_page_preview'
             id='main_page_preview'>
@@ -95,7 +85,6 @@
 
 <script>
 import vModalcart from './components/v-modal-cart.vue'
-import vModalContact from './components/v-modal-contact'
 
 import {mapGetters, mapActions} from 'vuex'
 
@@ -103,13 +92,11 @@ export default {
   name: 'App',
   data() {
       return {
-          showCart: false,
-          showContact: false
+          showCart: false
       }
   },
   components: {
-      vModalcart,
-      vModalContact
+      vModalcart
   },
   computed: mapGetters(['allProducts','allCart', 'allSumInCart']),
   methods: {
@@ -123,9 +110,6 @@ export default {
       },
       showContactModal() {
           this.showContact = true;
-      },
-      showContactModalTest() {
-          alert("Эта часть не доделана :(")
       },
       closeCartModal() {
           this.showCart = false;
@@ -160,8 +144,15 @@ export default {
     -khtml-user-select: none;
     -webkit-user-select: none;
 }
+::-webkit-scrollbar {
+  width: 0;
+}
+
 .body {
     max-width: 1440px;
+}
+.inactive {
+    position:fixed;
 }
 .main_header {
     position: fixed;
@@ -238,7 +229,7 @@ export default {
     align-items: center;
     width: 100%;
     position: absolute;
-    height: 100%;
+    height: 850px;
     background-color: #5c5b5b59;
 }
 .wrapper_modal_contact {
@@ -275,6 +266,7 @@ export default {
 }
 .main_page {
     margin-top: 70px;
+    margin-bottom: 70px;
 }
 .text_on_main_page {
     margin-top: 150px;
