@@ -17,15 +17,12 @@
           <nav class="main_nav">
               <a href="#main_page_preview">Главная</a>
               <a href="#main_catalog">Каталог</a>
-              <a 
-                @click="showCartModal"
-                class="button_show_modal_cart" 
-                href=#>Корзина</a>
               <a href="#footer">Контакты</a>
               <span 
-                class="button_contact_me"
+                class="button_to_cart"
               ><a 
-                    @click="showContactModalTest"
+                    @click="showCartModal"
+                    class="button_show_modal_cart" 
                     href=#>Связаться со мной</a></span>
            </nav>
       </header>
@@ -204,7 +201,7 @@ export default {
     margin-left: calc(100% / 8.135);
     width: calc(100% / 1.515);
     height: 65px;
-
+    justify-content: space-between;
     align-items: center;
 
     border-radius: 50px;
@@ -253,7 +250,7 @@ export default {
     height: 100%;
     background-color: #5c5b5b59;
 }
-.button_contact_me {
+.button_to_cart {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -266,7 +263,7 @@ export default {
     border: 3px solid #5D3F73;
     background: #fff;
 }
-.button_contact_me a {
+.button_to_cart a {
     margin-top: 0;
     font-family: 'GT_Eesti_Pro';
     font-style: normal;
@@ -275,6 +272,9 @@ export default {
     line-height: 23px;
     text-align: center;
     color: #6C6273;
+}
+.main_page {
+    margin-top: 70px;
 }
 .text_on_main_page {
     margin-top: 150px;
@@ -309,7 +309,7 @@ export default {
     width: 45%;
 }
 
-.button_contact_me a:hover:after,
+.button_to_cart a:hover:after,
           a:focus:after {
             width: 0%;
           }
@@ -349,7 +349,7 @@ export default {
 
 .main_page_catalog {
     width: 79.16%;
-    margin: 50px auto 0;
+    margin: 100px auto 0;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;

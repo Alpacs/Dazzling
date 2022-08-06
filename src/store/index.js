@@ -10,7 +10,6 @@ export default createStore({
         },
         Если бы можно было показать данный проект через свой пк, 
         то я бы делал примерно такой запрос к серверу
-        
         */
         addProductToCart(ctx, product) {
             ctx.commit('addDataCart', product)
@@ -42,14 +41,11 @@ export default createStore({
             state.sum_in_cart=state.sum_in_cart+product.cost;
         },
         deleteProductFromCart(state, product) {
-            let indexOfProductInCart = state.data_cart.indexOf(product);
             state.sum_in_cart = state.sum_in_cart - product.count_in_cart*product.cost;
-            state.data_catalog[product.article].count = state.data_catalog[product.article].count + state.data_catalog[product.article].count_in_cart;
-            state.data_catalog[product.article].count_in_cart = 0;
-            state.data_cart.splice(indexOfProductInCart);
+            state.data_cart = state.data_cart.filter(p => p.article !== product.article);
         },
         incCountInCart(state, product) {
-            if(product.count_in_cart > 0 && product.count >0) {
+            if(product.count_in_cart > 0 && product.count > 0) {
                 let indexOfProductInCart = state.data_cart.indexOf(product);
                 state.data_cart[indexOfProductInCart].count_in_cart++;
                 state.data_cart[indexOfProductInCart].count--;
@@ -57,7 +53,7 @@ export default createStore({
             }
         },
         decCountInCart(state, product) {
-            if(product.count_in_cart > 0 && product.count > 0) {
+            if(product.count_in_cart-1 !== 0) {
                 let indexOfProductInCart = state.data_cart.indexOf(product);
                 state.data_cart[indexOfProductInCart].count_in_cart--;
                 state.data_cart[indexOfProductInCart].count++;
@@ -123,6 +119,7 @@ export default createStore({
         }
         ],
         data_cart: [
+            
         ],
         sum_in_cart: 0
     },
