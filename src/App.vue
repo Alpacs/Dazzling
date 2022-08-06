@@ -23,7 +23,7 @@
               ><a 
                     @click="showCartModal"
                     class="button_show_modal_cart" 
-                    href=#>Связаться со мной</a></span>
+                    href=#>Корзина</a></span>
            </nav>
       </header>
       <div
