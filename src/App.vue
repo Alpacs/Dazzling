@@ -48,7 +48,10 @@
       <div class='main_page_preview'
             id='main_page_preview'>
         <div class='text_on_main_page'>
-            <h1>Здесь продаются<br> очки</h1>
+            <div class="text_on_main_page_header">
+                <h1>Здесь продаются</h1>
+                <h1 class="text_on_main_page_glasses">очки</h1>
+            </div>
             <p>Теперь ты знаешь</p>
         </div>
         <div class="wrapper_img_main_page_preview">
@@ -171,6 +174,7 @@ export default {
 }
 .main_header {
     position: fixed;
+    z-index: 4;
     display: flex;
     background: #E3CEF2;
     width: 100%;
@@ -254,6 +258,7 @@ export default {
     height: 4px;
 }
 .main_nav {
+    z-index: -6;
     display: flex;
     margin-left: calc(100% / 8.135);
     width: calc(100% / 1.515);
@@ -290,12 +295,13 @@ export default {
             width: 102%;
           }
 .wrapper_vModalcart {
+    z-index: 7;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     position: absolute;
-    height: 850px;
+    height: 100vh;
     background-color: #5c5b5b59;
 }
 .wrapper_modal_contact {
@@ -335,7 +341,7 @@ export default {
     margin-bottom: 70px;
 }
 .text_on_main_page {
-    margin-top: 10vh;
+    margin-top: 9vh;
     margin-bottom: 20px;
     padding-left: 30px;
 }
@@ -515,7 +521,7 @@ export default {
         display: block;
         background-color: white;
         width: 50%;
-        height: 250px;
+        height: 375px;
         padding-top: 40px;
         right: -1500px;
         margin-top: 65px;
@@ -525,9 +531,9 @@ export default {
     .main_nav>a {
         display: table;
         margin: 0;
-        font-size: calc(16px + 10 * (100vw / 1440));
+        font-size: calc(36px + 16 * (100vw / 1440));
         padding-left: calc(100% / 4.96);
-        
+        margin-top: 25px;
     }
     .button_to_cart {
         visibility: hidden;
@@ -537,8 +543,9 @@ export default {
         border: 0;
     }
     .button_to_cart a {
-        font-size: calc(16px + 10 * (100vw / 1440));
+        font-size: calc(36px + 16 * (100vw / 1440));
         visibility: visible;
+        margin-top: 45px;
     }
     .header_burger.active {
         margin-top: 80px;
@@ -546,6 +553,38 @@ export default {
     }
     .main_nav.active {
         right: 25px;
+    }
+    .main_page_preview {
+        padding-top: 109px;
+        height: 105vh;
+    }
+    .text_on_main_page {
+        z-index: -5;
+        position: relative;
+    }
+    .text_on_main_page_header {
+        margin-bottom: 130px;
+    }
+    .text_on_main_page_header h1 {
+        background-color: white;
+        font-size: 8.7vw;
+        margin-bottom: 0;
+    }
+    .text_on_main_page p {
+        background-color: white;
+        font-size: 5.7vw;
+        width: fit-content;
+    }
+    .wrapper_img_main_page_preview {
+        position: absolute;
+        z-index: -6;
+        height: 70vh;
+        width: 100%;
+    }
+    .text_on_main_page_glasses {
+        width: fit-content;
+        right: 0;
+        position: absolute;
     }
 }
 </style>
