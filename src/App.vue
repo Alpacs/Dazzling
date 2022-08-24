@@ -15,16 +15,25 @@
                   <p>Isn't it?</p>
               </span>
           </a>
-          <nav class="main_nav">
+          <div 
+            class="header_burger"
+            :class="{ active: isActive }"
+            @click="openNav"
+            >
+            <span></span>
+          </div>
+          <nav class="main_nav"
+               :class="{ active: isActive }">
               <a href="#main_page_preview">Главная</a>
               <a href="#main_catalog">Каталог</a>
               <a href="#footer">Контакты</a>
               <span 
                 class="button_to_cart"
-              ><a 
-                    @click="showCartModal"
+              >
+                <a  @click="showCartModal"
                     class="button_show_modal_cart" 
-                    href=#>Корзина</a></span>
+                    href=#>Корзина</a>
+              </span>
            </nav>
       </header>
       <div
@@ -39,10 +48,12 @@
       <div class='main_page_preview'
             id='main_page_preview'>
         <div class='text_on_main_page'>
-            <h1>Здесь продаются очки</h1>
+            <h1>Здесь продаются<br> очки</h1>
             <p>Теперь ты знаешь</p>
         </div>
-        <img src='./assets/img/main_page_preview.png'>
+        <div class="wrapper_img_main_page_preview">
+            <img src='./assets/img/main_page_preview.png'>
+        </div>
       </div>
       <main id="main_catalog" class="main_page">
           <div class="main_page_container_sort">
@@ -92,7 +103,8 @@ export default {
   name: 'App',
   data() {
       return {
-          showCart: false
+          showCart: false,
+          isActive: false
       }
   },
   components: {
@@ -131,8 +143,11 @@ export default {
           const windowScroll = window.pageYOffset || document.documentElement.scrollTop;
           window.scrollTop = elementCoordinates.top + windowScroll;
           console.log(windowScroll)
+      },
+      openNav() {
+        this.isActive = !this.isActive
       }
-  }
+    }
 }
 </script>
 
@@ -187,6 +202,57 @@ export default {
     margin-left: 2px;
 }
 
+.header_burger {
+        z-index: 5;
+        display: none;
+        position: absolute;
+        right: 0;
+        margin-right: 75px;
+        margin-top: 10px;
+        width: 30px;
+        height: 20px;
+}
+.header_burger::before,
+.header_burger::after{
+    content: '';
+    background-color: #6C6273;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    left: 0;
+    transition: all 0.3s ease 0s ;
+}
+.header_burger span {
+    transition: all 0.3s ease 0s ;
+    position: absolute;
+    background-color: #6C6273;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    top: 9px;
+}
+.header_burger::before{
+    top: 0;
+}
+.header_burger::after{
+    bottom: 0;
+}
+.header_burger.active {
+    margin-top: 20px;
+}
+.header_burger.active span {
+    transform: scale(0)
+}
+.header_burger.active::before {
+    transform: rotate(45deg);
+    bottom: 0px;
+    height: 4px;
+}
+.header_burger.active::after {
+    transform: rotate(-45deg);
+    top: 0px;
+    height: 4px;
+}
 .main_nav {
     display: flex;
     margin-left: calc(100% / 8.135);
@@ -199,11 +265,11 @@ export default {
     border: 2px;
     
 }
-.main_nav a {
+.main_nav>a {
     font-family: 'GT_Eesti_Pro';
     font-style: normal;
     font-weight: 500;
-    font-size: 30px;
+    font-size: 2.9vw;
     line-height: 35px;
 
     color: #6C6273;
@@ -249,35 +315,35 @@ export default {
     margin-left: calc(100% / 5.965);
 
     width: calc(100% / 4.72);
-    height: 51px;
+    height: 8vh;
     border-radius: 35px;
-    border: 3px solid #5D3F73;
+    border: 3px solid #7827b3;
     background: #fff;
 }
 .button_to_cart a {
-    margin-top: 0;
+    width: 100%;
+    border-radius: 35px;
     font-family: 'GT_Eesti_Pro';
     font-style: normal;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 2.3vw;
     line-height: 23px;
     text-align: center;
     color: #6C6273;
 }
-.main_page {
-    margin-top: 70px;
+.main_page_preview {
     margin-bottom: 70px;
 }
 .text_on_main_page {
-    margin-top: 150px;
+    margin-top: 10vh;
     margin-bottom: 20px;
-    padding-left: 35px;
+    padding-left: 30px;
 }
 .text_on_main_page h1 {
     font-family: 'GT_Eesti_Pro';
     font-style: normal;
     font-weight: 400;
-    font-size: 65px;
+    font-size: 5.7vw;
     color: #6C6273;
     text-align: right;
     margin-bottom: 70px;
@@ -286,19 +352,23 @@ export default {
     font-family: 'GT_Eesti_Pro';
     font-style: normal;
     font-weight: 400;
-    font-size: 40px;
+    font-size: 3vw;
     color: #6C6273;
     text-align: center;
 }
 .main_page_preview {
     width: 100%;
     display: flex;
-    justify-content: flex-end;
-    padding: 133px 200px 0 0;
+    justify-content: space-around;
+    padding-top: 133px;
+}
+.wrapper_img_main_page_preview {
+    right: 0;
+    width: 38%;
+    object-fit: cover;
 }
 .main_page_preview img {
-    right: 0;
-    width: 45%;
+    width: 100%;
 }
 
 .button_to_cart a:hover:after,
@@ -338,7 +408,9 @@ export default {
 .select_list {
     display: none;
 }
-
+.main_page {
+    margin-bottom: 30px;
+}
 .main_page_catalog {
     width: 79.16%;
     margin: 100px auto 0;
@@ -369,6 +441,11 @@ export default {
     line-height: 29px;
     margin-bottom: 27px;
     height: 121px;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
 }
 .product_cost {
     font-family: 'GT_Eesti_Pro';
@@ -414,9 +491,6 @@ export default {
     align-items: center;
     text-align: center;
 }
-.alert {
-    display: none;
-}
 @font-face {
     font-family: "GT_Eesti_Pro"; 
     src: url("./assets/fonts/GT_Eesti_Pro/GTEestiProDisplay-RegularItalic.ttf") format("truetype"); 
@@ -428,5 +502,50 @@ export default {
     src: url("./assets/fonts/GT_Eesti_Pro/GTEestiProDisplay-Light.ttf") format("truetype"); 
     font-style: light; 
     font-weight: normal; 
+}
+@media (max-width: 1024px) {
+    .header_burger {
+        display: block;
+        margin: 0;
+        right: 70px;
+        top: 37px;
+    }
+    .main_nav {
+        position: absolute;
+        display: block;
+        background-color: white;
+        width: 50%;
+        height: 250px;
+        padding-top: 40px;
+        right: -1500px;
+        margin-top: 65px;
+        border-radius: 15px;
+        border: 3px solid #5D3F73;
+    }
+    .main_nav>a {
+        display: table;
+        margin: 0;
+        font-size: calc(16px + 10 * (100vw / 1440));
+        padding-left: calc(100% / 4.96);
+        
+    }
+    .button_to_cart {
+        visibility: hidden;
+        margin-left: calc(100% / 4.96);
+        margin-top: 0;
+        height: 37px;
+        border: 0;
+    }
+    .button_to_cart a {
+        font-size: calc(16px + 10 * (100vw / 1440));
+        visibility: visible;
+    }
+    .header_burger.active {
+        margin-top: 80px;
+        right: 70px;
+    }
+    .main_nav.active {
+        right: 25px;
+    }
 }
 </style>
