@@ -89,10 +89,6 @@
               <h1>Ссылка на мою страницу Вконтакте: </h1>
               <a target=»_blank» href='https://vk.com/kamarilya'><img src='./assets/img/icon_footer_vk.png'></a>
           </div>
-          <div class='link_to_vk'>
-              <h1>Ссылка на страницу Вконтакте моего друга,<br> который помог с оформлением: </h1>
-              <a target=»_blank» href='https://vk.com/kakoitochertila'><img src='./assets/img/icon_footer_vk.png'></a>
-          </div>
       </footer>
   </body>
 </template>
