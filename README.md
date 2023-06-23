@@ -1,23 +1,25 @@
 # dazzling
 
+## Можно не скачивать, просто перейти по ссылке:
+```
+https://alpacs.github.io/Dazzling/
+```
+
 ## Project setup
 ```
-npm install
+npm i
+npm install serve (если запускать из dist)
 ```
 
 ### Compiles and hot-reloads for development
 ```
+serve -s dist (если запускать из dist)
 npm run serve
 ```
 
 ### Compiles and minifies for production
 ```
 npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
 ```
 
 ### Customize configuration
